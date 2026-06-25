@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Activities | Travel Planner</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:
+linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
+url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee");
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+min-height:100vh;
+}
+
+nav{
+background:rgba(0,0,0,0.75);
+padding:15px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+color:white;
+font-size:28px;
+font-weight:bold;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+}
+
+nav ul li{
+margin-left:20px;
+}
+
+nav ul li a{
+color:white;
+text-decoration:none;
+font-weight:500;
+}
+
+nav ul li a:hover{
+color:#00d4ff;
+}
+
+.hero{
+text-align:center;
+padding:50px 20px;
+color:white;
+}
+
+.hero h1{
+font-size:45px;
+margin-bottom:10px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+.container{
+width:90%;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+padding-bottom:50px;
+}
+
+.card{
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(10px);
+border-radius:15px;
+overflow:hidden;
+color:white;
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.card-content{
+padding:20px;
+}
+
+.card h2{
+margin-bottom:10px;
+}
+
+.card p{
+font-size:14px;
+margin-bottom:15px;
+}
+
+.card button{
+padding:10px 20px;
+border:none;
+border-radius:8px;
+background:#00b4d8;
+color:white;
+cursor:pointer;
+font-size:15px;
+}
+
+.card button:hover{
+background:#0096c7;
+}
+
+#selectedActivity{
+width:80%;
+margin:20px auto;
+padding:15px;
+background:white;
+border-radius:10px;
+font-size:20px;
+font-weight:bold;
+text-align:center;
+display:none;
+}
+
+footer{
+background:rgba(0,0,0,0.75);
+color:white;
+text-align:center;
+padding:20px;
+margin-top:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="logo">✈ Travel Planner</div>
+
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="/destination/">Destination</a></li>
+<li><a href="/activities/">Activities</a></li>
+<li><a href="/travelldates/">Travel Dates</a></li>
+<li><a href="/weather/">Weather</a></li>
+<li><a href="/googlemaps/">Maps</a></li>
+<li><a href="/itinerary/">Itinerary</a></li>
+<li><a href="/budget/">Budget</a></li>
+<li><a href="/login/">Login</a></li>
+</ul>
+</nav>
+
+<div class="hero">
+<h1>🎯 Travel Activities</h1>
+<p>Select activities for your dream trip</p>
+</div>
+
+<div id="selectedActivity"></div>
+
+<div class="container">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb">
+<div class="card-content">
+<h2>Trekking</h2>
+<p>Explore mountains and scenic trails.</p>
+<button onclick="selectActivity('Trekking')">Select</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e">
+<div class="card-content">
+<h2>Beach Fun</h2>
+<p>Enjoy beaches, water sports and sunsets.</p>
+<button onclick="selectActivity('Beach Fun')">Select</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c">
+<div class="card-content">
+<h2>Shopping</h2>
+<p>Buy souvenirs and local products.</p>
+<button onclick="selectActivity('Shopping')">Select</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819">
+<div class="card-content">
+<h2>Night Life</h2>
+<p>Experience exciting city nightlife.</p>
+<button onclick="selectActivity('Night Life')">Select</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff">
+<div class="card-content">
+<h2>Camping</h2>
+<p>Stay close to nature under the stars.</p>
+<button onclick="selectActivity('Camping')">Select</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e">
+<div class="card-content">
+<h2>Sightseeing</h2>
+<p>Visit famous landmarks and attractions.</p>
+<button onclick="selectActivity('Sightseeing')">Select</button>
+</div>
+</div>
+
+</div>
+
+<footer>
+<h3>Travel Itinerary Planner</h3>
+<p>Plan • Explore • Enjoy</p>
+</footer>
+
+<script>
+
+function selectActivity(activity){
+
+localStorage.setItem("activity",activity);
+
+document.getElementById("selectedActivity").style.display="block";
+
+document.getElementById("selectedActivity").innerHTML =
+"✅ Selected Activity : " + activity;
+
+}
+
+</script>
+
+</body>
+</html>
