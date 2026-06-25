@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel Itinerary Planner</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:
+    linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
+    url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee");
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+    min-height:100vh;
+}
+
+/* Navigation */
+
+nav{
+    background:rgba(0,0,0,0.7);
+    padding:15px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    color:white;
+    font-size:28px;
+    font-weight:bold;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+}
+
+nav ul li{
+    margin-left:20px;
+}
+
+nav ul li a{
+    color:white;
+    text-decoration:none;
+    font-weight:500;
+}
+
+nav ul li a:hover{
+    color:#00b4d8;
+}
+
+/* Container */
+
+.container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:50px;
+}
+
+.card{
+    width:700px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(12px);
+    border-radius:20px;
+    padding:30px;
+    color:white;
+    box-shadow:0px 8px 20px rgba(0,0,0,0.4);
+}
+
+.card h1{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:none;
+    border-radius:10px;
+    outline:none;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:#00b4d8;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0096c7;
+}
+
+#output{
+    margin-top:25px;
+    padding:20px;
+    background:rgba(255,255,255,0.1);
+    border-radius:10px;
+}
+
+footer{
+    text-align:center;
+    color:white;
+    padding:20px;
+    background:rgba(0,0,0,0.6);
+    margin-top:40px;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">✈ Travel Planner</div>
+
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="/destination/">Destination</a></li>
+<li><a href="/activities/">Activities</a></li>
+<li><a href="/travelldates/">Travel Dates</a></li>
+<li><a href="/weather/">Weather</a></li>
+<li><a href="/googlemaps/">Maps</a></li>
+<li><a href="/itinerary/">Itinerary</a></li>
+<li><a href="/tripplan/">Trip Plan</a></li>
+<li><a href="/login/">Login</a></li>
+</ul>
+
+</nav>
+
+<div class="container">
+
+<div class="card">
+
+<h1>📋 Travel Itinerary Planner</h1>
+
+<input type="text" id="name" placeholder="Traveler Name">
+
+<input type="text" id="destination" placeholder="Destination">
+
+<input type="date" id="startdate">
+
+<input type="date" id="enddate">
+
+<input type="text" id="activities"
+placeholder="Activities (Sightseeing, Shopping, Trekking...)">
+
+<button onclick="generateItinerary()">
+Generate Itinerary
+</button>
+
+<div id="output"></div>
+
+</div>
+
+</div>
+
+<footer>
+<h3>Travel Itinerary Planner</h3>
+<p>Plan Your Perfect Journey</p>
+</footer>
+
+<script>
+
+function generateItinerary(){
+
+let name =
+document.getElementById("name").value;
+
+let destination =
+document.getElementById("destination").value;
+
+let startdate =
+document.getElementById("startdate").value;
+
+let enddate =
+document.getElementById("enddate").value;
+
+let activities =
+document.getElementById("activities").value;
+
+if(name=="" || destination==""){
+alert("Please fill all details");
+return;
+}
+
+document.getElementById("output").innerHTML=
+`
+<h2>🧳 Trip Summary</h2>
+<br>
+<p><strong>Name:</strong> ${name}</p>
+<p><strong>Destination:</strong> ${destination}</p>
+<p><strong>Start Date:</strong> ${startdate}</p>
+<p><strong>End Date:</strong> ${enddate}</p>
+<p><strong>Activities:</strong> ${activities}</p>
+
+<br>
+
+<h3>📅 Suggested Plan</h3>
+<p>Day 1 → Arrival & Local Sightseeing</p>
+<p>Day 2 → Explore Tourist Attractions</p>
+<p>Day 3 → Shopping & Food Experience</p>
+<p>Day 4 → Adventure Activities</p>
+<p>Day 5 → Return Journey</p>
+`;
+}
+
+</script>
+
+</body>
+</html>

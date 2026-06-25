@@ -1,0 +1,347 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel Itinerary Planner</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f4f7fc;
+}
+
+/* Navbar */
+nav{
+background:#0d1b2a;
+padding:15px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+color:white;
+font-size:28px;
+font-weight:bold;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+}
+
+nav ul li{
+margin-left:20px;
+}
+
+nav ul li a{
+color:white;
+text-decoration:none;
+}
+
+/* Hero Section */
+.hero{
+height:90vh;
+background:
+linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
+url('https://images.unsplash.com/photo-1501785888041-af3ef285b470');
+background-size:cover;
+background-position:center;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+}
+
+.hero h1{
+font-size:65px;
+}
+
+.hero p{
+font-size:22px;
+margin:15px 0;
+}
+
+.btn{
+background:#ff6b00;
+color:white;
+border:none;
+padding:12px 25px;
+border-radius:30px;
+cursor:pointer;
+}
+
+/* Modules */
+.modules{
+padding:60px;
+}
+
+.modules h2{
+text-align:center;
+margin-bottom:40px;
+font-size:40px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+text-align:center;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card h3{
+color:#0077b6;
+margin-bottom:10px;
+}
+
+.card input{
+width:100%;
+padding:10px;
+margin:8px 0;
+border:1px solid #ccc;
+border-radius:8px;
+}
+
+/* Footer */
+footer{
+background:#0d1b2a;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:40px;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="logo">✈ Travel Planner</div>
+
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">Destination</a></li>
+<li><a href="#">Weather</a></li>
+<li><a href="#">Budget</a></li>
+<li><a href="#">Login</a></li>
+</ul>
+</nav>
+
+<section class="hero">
+<div>
+<h1>Plan Your Dream Journey</h1>
+<p>Travel Smarter with Maps, Weather and Budget Planning</p>
+<button class="btn" onclick="window.location.href='/tripplan/'">
+    Start Planning
+</button>
+</div>
+</section>
+
+<section class="modules">
+
+<h2>Travel Dashboard</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>🏠 Dashboard</h3>
+<p>Manage all travel plans.</p>
+</div>
+
+<div class="card">
+<h3>🌍 Destination</h3>
+<p>Select your dream destination.</p>
+</div>
+
+<div class="card">
+<h3>📅 Travel Dates</h3>
+<input type="date">
+<input type="date">
+</div>
+
+<div class="card">
+<h3>🎯 Activities</h3>
+<p>✔ Trekking</p>
+<p>✔ Sightseeing</p>
+<p>✔ Boating</p>
+</div>
+
+<div class="card">
+<h3>📝 Itinerary</h3>
+<p>Day 1 - Travel</p>
+<p>Day 2 - Explore</p>
+<p>Day 3 - Return</p>
+</div>
+
+<div class="card">
+<h3>☁ Weather</h3>
+<p>City: Vijayawada</p>
+<p>Temperature: 32°C</p>
+<p>Condition: Sunny</p>
+</div>
+
+<div class="card">
+<h3>🗺 Google Maps</h3>
+
+<iframe
+src="https://maps.google.com/maps?q=vijayawada&t=&z=13&ie=UTF8&iwloc=&output=embed"
+width="100%"
+height="200"
+style="border:0;border-radius:10px;">
+</iframe>
+
+</div>
+
+<div class="card">
+<h3>💰 Budget Planner</h3>
+
+<p>Transport: ₹5000</p>
+<p>Hotel: ₹8000</p>
+<p>Food: ₹3000</p>
+<p>Activities: ₹2000</p>
+
+<h4 id="total">Total Budget: ₹18000</h4>
+
+<br>
+
+<button class="btn" onclick="calculateBudget()">
+Calculate
+</button>
+</div>
+
+<div class="card">
+<h3>✈ Trip Plan</h3>
+<p>Generate Complete Travel Plan</p>
+</div>
+
+<div class="card">
+<h3>🔐 Login / Registration</h3>
+
+<input type="text" id="username"
+placeholder="Username">
+
+<input type="email" id="email"
+placeholder="Email">
+
+<input type="password" id="password"
+placeholder="Password">
+
+<button class="btn"
+onclick="registerUser()">
+Register
+</button>
+
+<br><br>
+
+<button class="btn"
+onclick="loginUser()">
+Login
+</button>
+
+<p id="message"></p>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+<h3>Travel Itinerary Planner</h3>
+<p>Plan • Explore • Travel • Enjoy</p>
+<p>© 2026 All Rights Reserved</p>
+</footer>
+
+<script>
+
+function calculateBudget(){
+
+let transport=5000;
+let hotel=8000;
+let food=3000;
+let activities=2000;
+
+let total=
+transport+hotel+food+activities;
+
+document.getElementById("total").innerHTML=
+"Total Budget: ₹"+total;
+
+alert("Total Budget = ₹"+total);
+}
+
+function registerUser(){
+
+let username=
+document.getElementById("username").value;
+
+let email=
+document.getElementById("email").value;
+
+let password=
+document.getElementById("password").value;
+
+localStorage.setItem("username",username);
+localStorage.setItem("email",email);
+localStorage.setItem("password",password);
+
+document.getElementById("message").innerHTML=
+"✅ Registration Successful";
+}
+
+function loginUser(){
+
+let username=
+document.getElementById("username").value;
+
+let password=
+document.getElementById("password").value;
+
+let storedUser=
+localStorage.getItem("username");
+
+let storedPass=
+localStorage.getItem("password");
+
+if(username===storedUser &&
+password===storedPass){
+
+document.getElementById("message").innerHTML=
+"✅ Login Successful";
+
+}else{
+
+document.getElementById("message").innerHTML=
+"❌ Invalid Username or Password";
+
+}
+}
+
+</script>
+
+</body>
+</html>
+```

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel Planner Login</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+min-height:100vh;
+background:
+linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
+url("https://images.unsplash.com/photo-1506929562872-bb421503ef21");
+background-size:cover;
+background-position:center;
+}
+
+/* Navbar */
+
+nav{
+background:rgba(0,0,0,.5);
+padding:15px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+color:white;
+font-size:28px;
+font-weight:bold;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+}
+
+nav ul li{
+margin-left:20px;
+}
+
+nav ul li a{
+text-decoration:none;
+color:white;
+}
+
+/* Login Box */
+
+.container{
+display:flex;
+justify-content:center;
+align-items:center;
+height:85vh;
+}
+
+.box{
+width:420px;
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(15px);
+padding:40px;
+border-radius:20px;
+box-shadow:0 8px 20px rgba(0,0,0,.3);
+}
+
+.box h2{
+text-align:center;
+color:white;
+margin-bottom:20px;
+}
+
+input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:10px;
+outline:none;
+}
+
+.btn{
+width:100%;
+padding:12px;
+background:#ff6b00;
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-size:16px;
+}
+
+.btn:hover{
+background:#e85d04;
+}
+
+.links{
+text-align:center;
+margin-top:15px;
+}
+
+.links a{
+color:white;
+text-decoration:none;
+}
+
+.footer{
+text-align:center;
+color:white;
+padding:15px;
+}
+
+#msg{
+text-align:center;
+margin-top:15px;
+color:white;
+font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="logo">✈ Travel Planner</div>
+
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="/destination/">Destination</a></li>
+<li><a href="/activities/">Activities</a></li>
+<li><a href="/weather/">Weather</a></li>
+<li><a href="/googlemaps/">Maps</a></li>
+<li><a href="/tripplan/">Trip Plan</a></li>
+</ul>
+</nav>
+
+<div class="container">
+
+<div class="box">
+
+<h2>Login / Registration</h2>
+
+<input type="text"
+id="username"
+placeholder="Enter Username">
+
+<input type="email"
+id="email"
+placeholder="Enter Email">
+
+<input type="password"
+id="password"
+placeholder="Enter Password">
+
+<button class="btn"
+onclick="registerUser()">
+Register
+</button>
+
+<br><br>
+
+<button class="btn"
+onclick="loginUser()">
+Login
+</button>
+
+<div id="msg"></div>
+
+<div class="links">
+<br>
+<a href="#">Forgot Password?</a>
+</div>
+
+</div>
+
+</div>
+
+<div class="footer">
+© 2026 Travel Itinerary Planner
+</div>
+
+<script>
+
+function registerUser(){
+
+let username =
+document.getElementById("username").value;
+
+let email =
+document.getElementById("email").value;
+
+let password =
+document.getElementById("password").value;
+
+if(username=="" || email=="" || password==""){
+alert("Please fill all fields");
+return;
+}
+
+localStorage.setItem("username",username);
+localStorage.setItem("email",email);
+localStorage.setItem("password",password);
+
+document.getElementById("msg").innerHTML =
+"✅ Registration Successful";
+}
+
+function loginUser(){
+
+let username =
+document.getElementById("username").value;
+
+let password =
+document.getElementById("password").value;
+
+let storedUser =
+localStorage.getItem("username");
+
+let storedPass =
+localStorage.getItem("password");
+
+if(username===storedUser &&
+password===storedPass){
+
+document.getElementById("msg").innerHTML =
+"✅ Login Successful";
+
+window.location.href="/";
+
+}else{
+
+document.getElementById("msg").innerHTML =
+"❌ Invalid Username or Password";
+
+}
+}
+
+</script>
+
+</body>
+</html>
