@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weather Forecast - Travel Planner</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),
+    url('https://images.unsplash.com/photo-1504608524841-42fe6f032b4b');
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+}
+
+/* Navigation */
+
+nav{
+    background:rgba(0,0,0,0.6);
+    padding:15px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    color:white;
+    font-size:28px;
+    font-weight:bold;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+}
+
+nav ul li{
+    margin-left:20px;
+}
+
+nav ul li a{
+    color:white;
+    text-decoration:none;
+    font-weight:500;
+}
+
+nav ul li a:hover{
+    color:#00b4d8;
+}
+
+/* Weather Container */
+
+.container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:60px 20px;
+}
+
+.weather-card{
+    width:500px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(12px);
+    border-radius:20px;
+    padding:40px;
+    text-align:center;
+    color:white;
+    box-shadow:0 8px 20px rgba(0,0,0,0.3);
+}
+
+.weather-card h1{
+    margin-bottom:20px;
+}
+
+.weather-card input{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    margin-bottom:15px;
+    outline:none;
+}
+
+.weather-card button{
+    background:#00b4d8;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.weather-card button:hover{
+    background:#0096c7;
+}
+
+.result{
+    margin-top:25px;
+    font-size:18px;
+    line-height:35px;
+}
+
+/* Footer */
+
+footer{
+    text-align:center;
+    color:white;
+    padding:20px;
+    background:rgba(0,0,0,0.5);
+    margin-top:50px;
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">✈ Travel Planner</div>
+
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/destination/">Destination</a></li>
+        <li><a href="/activities/">Activities</a></li>
+        <li><a href="/travelldates/">Travel Dates</a></li>
+        <li><a href="/weather/">Weather</a></li>
+        <li><a href="/googlemaps/">Maps</a></li>
+        <li><a href="/itinerary/">Itinerary</a></li>
+        <li><a href="/tripplan/">Trip Plan</a></li>
+        <li><a href="/login/">Login</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+
+<div class="weather-card">
+
+<h1>☁ Weather Forecast</h1>
+
+<input type="text" id="city" placeholder="Enter City Name">
+
+<button onclick="showWeather()">
+Check Weather
+</button>
+
+<div class="result" id="result">
+
+<p>🌍 City : Vijayawada</p>
+<p>🌡 Temperature : 32°C</p>
+<p>☀ Condition : Sunny</p>
+<p>💨 Wind Speed : 12 km/h</p>
+
+</div>
+
+</div>
+
+</div>
+
+<footer>
+    <h3>Travel Itinerary Planner</h3>
+    <p>Weather Forecast Module</p>
+</footer>
+
+<script>
+
+function showWeather(){
+
+let city=document.getElementById("city").value;
+
+if(city==""){
+    alert("Please Enter City Name");
+    return;
+}
+
+document.getElementById("result").innerHTML=
+`
+<p>🌍 City : ${city}</p>
+<p>🌡 Temperature : 30°C</p>
+<p>☁ Condition : Cloudy</p>
+<p>💨 Wind Speed : 10 km/h</p>
+`;
+
+}
+
+</script>
+
+</body>
+</html>
