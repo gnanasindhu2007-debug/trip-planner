@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Budget Planner | Travel Itinerary Planner</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:
+linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
+url("https://images.unsplash.com/photo-1488646953014-85cb44e25828");
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+min-height:100vh;
+}
+
+/* Navbar */
+
+nav{
+background:rgba(0,0,0,0.7);
+padding:15px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+color:white;
+font-size:28px;
+font-weight:bold;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+}
+
+nav ul li{
+margin-left:20px;
+}
+
+nav ul li a{
+color:white;
+text-decoration:none;
+font-weight:500;
+}
+
+nav ul li a:hover{
+color:#00b4d8;
+}
+
+/* Main Container */
+
+.container{
+display:flex;
+justify-content:center;
+align-items:center;
+padding:50px;
+}
+
+.card{
+width:700px;
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(10px);
+border-radius:20px;
+padding:30px;
+color:white;
+box-shadow:0 8px 20px rgba(0,0,0,0.3);
+}
+
+.card h1{
+text-align:center;
+margin-bottom:25px;
+}
+
+input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:10px;
+outline:none;
+}
+
+button{
+width:100%;
+padding:12px;
+margin-top:15px;
+border:none;
+border-radius:10px;
+background:#00b4d8;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#0096c7;
+}
+
+#result{
+margin-top:25px;
+padding:20px;
+background:rgba(255,255,255,0.1);
+border-radius:10px;
+display:none;
+}
+
+/* Footer */
+
+footer{
+background:rgba(0,0,0,0.7);
+color:white;
+text-align:center;
+padding:20px;
+margin-top:30px;
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+<div class="logo">✈ Travel Planner</div>
+
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="/dashboard/">Dashboard</a></li>
+<li><a href="/destination/">Destination</a></li>
+<li><a href="/travelldates/">Travel Dates</a></li>
+<li><a href="/weather/">Weather</a></li>
+<li><a href="/googlemaps/">Maps</a></li>
+<li><a href="/itinerary/">Itinerary</a></li>
+<li><a href="/budget/">Budget</a></li>
+<li><a href="/login/">Login</a></li>
+</ul>
+</nav>
+
+<div class="container">
+
+<div class="card">
+
+<h1>💰 Travel Budget Planner</h1>
+
+<input type="text" id="destination" placeholder="Destination">
+
+<input type="number" id="transport" placeholder="Transport Cost">
+
+<input type="number" id="hotel" placeholder="Hotel Cost">
+
+<input type="number" id="food" placeholder="Food Cost">
+
+<input type="number" id="shopping" placeholder="Shopping Cost">
+
+<input type="number" id="others" placeholder="Other Expenses">
+
+<button onclick="calculateBudget()">
+Calculate Budget
+</button>
+
+<div id="result"></div>
+
+</div>
+
+</div>
+
+<footer>
+<h3>Travel Itinerary Planner</h3>
+<p>Plan Your Budget Before You Travel</p>
+</footer>
+
+<script>
+
+function calculateBudget(){
+
+let destination =
+document.getElementById("destination").value;
+
+let transport =
+parseInt(document.getElementById("transport").value) || 0;
+
+let hotel =
+parseInt(document.getElementById("hotel").value) || 0;
+
+let food =
+parseInt(document.getElementById("food").value) || 0;
+
+let shopping =
+parseInt(document.getElementById("shopping").value) || 0;
+
+let others =
+parseInt(document.getElementById("others").value) || 0;
+
+let total =
+transport + hotel + food + shopping + others;
+
+document.getElementById("result").style.display="block";
+
+document.getElementById("result").innerHTML=
+`
+<h2>📊 Budget Summary</h2>
+<br>
+
+<p><strong>Destination:</strong> ${destination}</p>
+<p><strong>Transport:</strong> ₹${transport}</p>
+<p><strong>Hotel:</strong> ₹${hotel}</p>
+<p><strong>Food:</strong> ₹${food}</p>
+<p><strong>Shopping:</strong> ₹${shopping}</p>
+<p><strong>Others:</strong> ₹${others}</p>
+
+<hr style="margin:15px 0;">
+
+<h2>Total Budget: ₹${total}</h2>
+`;
+}
+
+</script>
+
+</body>
+</html>
